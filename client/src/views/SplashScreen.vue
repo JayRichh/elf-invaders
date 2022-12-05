@@ -43,11 +43,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-@font-face {
-  font-family: "Permanent Marker";
-  src: url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
-}
-
 .splash-screen {
   text-align: center;
   height: 100%;
@@ -72,14 +67,14 @@ export default {
   }
 }
 .splash-screen h1 {
-  font-family: "Permanent Marker", cursive;
+  font-family: "Verdana", sans-serif;
   font-size: 5rem;
   color: #201010;
   margin: 0;
 }
 
 .splash-screen h2 {
-  font-family: "Permanent Marker", cursive;
+  font-family: "Verdana", sans-serif;
   font-size: 3rem;
   color: #201010;
   margin: 0;
@@ -90,7 +85,7 @@ export default {
   list-style: none;
   padding: 0;
   margin: 0;
-  font-family: "Permanent Marker", cursive;
+  font-family: "Verdana", sans-serif;
   font-size: 2.5rem;
   color: #201010;
 }
