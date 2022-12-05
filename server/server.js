@@ -28,9 +28,9 @@ app.use("/api/", Player);
 app.use("/api/", Elf);
 app.use("/api/", HighScore);
 
-app.use(serveStatic(path.join(__dirname, "/client/dist")));
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "/client/dist", "index.html"));
+app.use(serveStatic(path.join(__dirname, "../client/dist")));
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
 });
 
 app.listen(PORT, () =>
