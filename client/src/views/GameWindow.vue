@@ -12,21 +12,33 @@ export default {
       name: "",
       gameOver: false,
       modal: false,
+      loading: true,
+      countdown: 5,
     };
   },
 
   async mounted() {
     // hit the API endpoint to wake the elves up
-    const response = await axios.get("https://elf-server.herokuapp.com/api/elf");
-    // set the elves data in the above array
+    const response = await axios.get(
+      "https://elf-server.herokuapp.com/api/elf"
+    );
+    this.readyGame();
     this.elves = response.data;
-    console.log(this.elves);
-
-    // start the timer method
-    this.startTimer();
   },
 
   methods: {
+    async readyGame() {
+      if (this.countdown > 0) {
+        setTimeout(() => {
+          this.countdown--;
+          this.readyGame();
+        }, 1000);
+      } else {
+        this.loading = false;
+        this.startTimer();
+      }
+    },
+
     resetTimer() {
       this.timer = 0;
     },
@@ -83,19 +95,26 @@ export default {
     timeTaken() {
       return this.timer;
     },
+    isLoading() {
+      return this.loading;
+    },
   },
 };
 </script>
 
 <template>
-  <div class="game-window">
+  <div v-if="isLoading" class="loading">
+    <div class="loading-content">
+      <p>Get Ready!!</p>
+      <p>{{ countdown }}</p>
+    </div>
+  </div>
+  <div v-else class="game-window">
     <nav>
       <h3>Find the elves!</h3>
       <h4 class="timer">Time: {{ timer }}</h4>
       <h4>Elves remaining: {{ elvesRemaining }}</h4>
-      <div>
-        <button @click="$router.push('/')">Restart</button>
-      </div>
+      <button @click="$router.push('/')">Restart</button>
     </nav>
 
     <CustomModal
@@ -131,6 +150,25 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #f5f5f5;
+}
+
+.loading-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
 .game-window {
   display: flex;
   flex-direction: column;
@@ -238,48 +276,32 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2rem;
   z-index: 2;
 }
 
 nav h3 {
-  font-size: 3rem;
-  color: #2c2929;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  margin-left: 2rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c3e50;
 }
 
 nav h4 {
-  font-size: 2rem;
-  color: #2c2929;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
-
-nav .timer {
-  width: 14rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #2c3e50;
 }
 
 nav button {
-  font-size: 2rem;
-  color: #2c2929;
+  margin-right: 2rem;
   padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2c3e50;
+  background-color: #f5f5f5;
+  border: 1px solid #2c3e50;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .modal {

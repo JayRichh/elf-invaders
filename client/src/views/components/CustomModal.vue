@@ -1,7 +1,6 @@
 import
 
 <template>
-  <!-- Modal to display timeTaken with name input, cancel and confirm buttons to either reset the game or send score to databsae -->
   <div class="modal">
     <h2>Well done!</h2>
     <h3>You found all the elves in {{ timeTaken }} seconds</h3>
@@ -42,7 +41,6 @@ export default {
   },
   methods: {
     async confirm() {
-      // poast the score to the database then redirect to the splash screen
       if (this.name !== "") {
         try {
           await axios.post("https://elf-server.herokuapp.com/api/highScore", {

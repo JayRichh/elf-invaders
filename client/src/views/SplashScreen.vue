@@ -68,14 +68,14 @@ export default {
 }
 .splash-screen h1 {
   font-family: "Verdana", sans-serif;
-  font-size: 5rem;
+  font-size: 3rem;
   color: #201010;
   margin: 0;
 }
 
 .splash-screen h2 {
   font-family: "Verdana", sans-serif;
-  font-size: 3rem;
+  font-size: 2rem;
   color: #201010;
   margin: 0;
   padding-top: 5rem;
@@ -86,17 +86,17 @@ export default {
   padding: 0;
   margin: 0;
   font-family: "Verdana", sans-serif;
-  font-size: 2.5rem;
+  font-size: 1.25rem;
   color: #201010;
 }
 
 .splash-screen li {
   margin: 0.5rem 0;
-  font-size: 2.5rem;
+  font-size: 1.25rem;
 }
 
 .splash-screen button {
-  font-size: 2rem;
+  font-size: 1.5rem;
   padding: 10px 20px;
   margin-top: 10px;
   border-radius: 5px;
