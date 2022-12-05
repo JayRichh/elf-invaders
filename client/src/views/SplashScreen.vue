@@ -12,7 +12,7 @@ export default {
 
   async mounted() {
     try {
-      const response = await axios.get("api/highScore");
+      const response = await axios.get("https://elf-server.herokuapp.com/api/highScore");
       console.log(response.data);
       this.highScores = response.data;
     } catch (error) {
