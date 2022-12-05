@@ -1,6 +1,6 @@
 # Elf Invaders
 
-> Play Live [Here](elf-invaders.netlify.app)
+> Play Live [here](https://elf-invaders.netlify.app/)
 
 ## General Information
 
