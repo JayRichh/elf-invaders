@@ -1,6 +1,6 @@
 # Elf Invaders
 
-> Love Demo Here [elf-invaders.netlify.app].
+> Play Live [Here](elf-invaders.netlify.app)
 
 ## General Information
 
