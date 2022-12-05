@@ -43,6 +43,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+@font-face {
+  font-family: "Permanent Marker";
+  src: url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+}
+
 .splash-screen {
   text-align: center;
   height: 100%;
