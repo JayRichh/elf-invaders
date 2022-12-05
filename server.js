@@ -28,9 +28,9 @@ app.use("/api/", Player);
 app.use("/api/", Elf);
 app.use("/api/", HighScore);
 
-app.use(express.static(path.resolve(__dirname, "./client/dist")));
+app.use(serveStatic(path.join(__dirname, "/client/dist")));
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "./client/dist", "index.html"));
+  res.sendFile(path.resolve(__dirname, "/client/dist", "index.html"));
 });
 
 app.listen(PORT, () =>
